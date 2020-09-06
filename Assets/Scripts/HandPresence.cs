@@ -10,6 +10,7 @@ public class HandPresence : MonoBehaviour
     
     private InputDevice targetDevice;
     private GameObject spawnedHandModel;
+    private Animator handAnimator;
 
     // Start is called before the first frame update
     void Start()
@@ -17,8 +18,8 @@ public class HandPresence : MonoBehaviour
         TryInitialize();
     }
 
-    void TryInitialize () {
-
+    void TryInitialize () 
+    {
         List<InputDevice> devices = new List<InputDevice>();
         InputDevices.GetDevicesWithCharacteristics(controllerCharacteristics, devices);
 
@@ -26,7 +27,24 @@ public class HandPresence : MonoBehaviour
             targetDevice = devices[0];
 
             spawnedHandModel = Instantiate(handModelPrefab, transform);
-            Debug.Log(spawnedHandModel.transform.position);
+            handAnimator = spawnedHandModel.GetComponent<Animator>();
+        }
+    }
+
+    void UpdateHandAnimation() 
+    {
+        if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue)) { 
+            handAnimator.SetFloat("Trigger", triggerValue);
+        }
+        else {
+            handAnimator.SetFloat("Trigger", 0);
+        }
+
+        if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue)) { 
+            handAnimator.SetFloat("Grip", gripValue);
+        }
+        else {
+            handAnimator.SetFloat("Grip", 0);
         }
     }
 
@@ -36,18 +54,8 @@ public class HandPresence : MonoBehaviour
         if (!targetDevice.isValid) {
             TryInitialize();
         }
-
-        
-        if (targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primaryButtonValue) && primaryButtonValue) {
-            //Debug.Log("Primary button pressed");
-        }
-
-        if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue) && triggerValue > 0.1f) {
-            //Debug.Log("trigger pressed" + triggerValue);
-        }
-
-        if (targetDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out Vector2 primary2DAxisValue) && primary2DAxisValue != Vector2.zero) {
-            //Debug.Log("Primary touchpad" + primary2DAxisValue);
+        else {
+            UpdateHandAnimation();
         }
     }
 }
