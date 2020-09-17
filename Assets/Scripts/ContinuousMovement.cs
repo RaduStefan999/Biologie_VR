@@ -6,14 +6,21 @@ using UnityEngine.XR.Interaction.Toolkit;
 
 public class ContinuousMovement : MonoBehaviour
 {
-    public float speed = 1;
-    public XRNode inputSource;
+
+    // Input Sources
+    public XRNode horizontalInputSource;
+    public XRNode verticalInputSource;
+
+    // Locomotion Constants
+    public float horizontalSpeed = 1;
+    public float verticalSpeed = 1;
     public float gravity = -9.81f;
     public LayerMask groundLayer;
 
     private XRRig rig;
     private float fallingSpeed;
-    private Vector2 inputAxis;
+    private Vector2 horizontalInputAxis;
+    private Vector2 verticalInputAxis;
     private CharacterController character;
 
     // Start is called before the first frame update
@@ -26,19 +33,25 @@ public class ContinuousMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        InputDevice device = InputDevices.GetDeviceAtXRNode(inputSource);
-        device.TryGetFeatureValue(CommonUsages.primary2DAxis, out inputAxis);
+        InputDevice horizontalDevice = InputDevices.GetDeviceAtXRNode(horizontalInputSource);
+        InputDevice verticalDevice = InputDevices.GetDeviceAtXRNode(verticalInputSource);
+
+        horizontalDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out horizontalInputAxis);
+        verticalDevice.TryGetFeatureValue(CommonUsages.primary2DAxis, out verticalInputAxis);
     }
 
     private void FixedUpdate()
     {
         bool isGrounded = CheckIfGrounded();
 
-        //move
+        //horizontal movement
         Quaternion headYaw = Quaternion.Euler(0, rig.cameraGameObject.transform.eulerAngles.y, 0);
-        Vector3 direction = headYaw * new Vector3(inputAxis.x, 0, inputAxis.y);
+        Vector3 direction = headYaw * new Vector3(horizontalInputAxis.x, 0, horizontalInputAxis.y);
 
-        character.Move(direction * Time.fixedDeltaTime * speed);
+        character.Move(direction * Time.fixedDeltaTime * horizontalSpeed);
+
+        //vertical movement
+        character.height = Mathf.Clamp(character.height - verticalInputAxis.y * Time.fixedDeltaTime * verticalSpeed, 0.5f, 3f);
 
         //gravity
         if (isGrounded) {
