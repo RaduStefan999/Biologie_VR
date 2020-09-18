@@ -22,12 +22,14 @@ public class ContinuousMovement : MonoBehaviour
     private Vector2 horizontalInputAxis;
     private Vector2 verticalInputAxis;
     private CharacterController character;
+    private GameObject cameraOffset;
 
     // Start is called before the first frame update
     void Start()
     {
         character = GetComponent<CharacterController>();
         rig = GetComponent<XRRig>();
+        cameraOffset = this.gameObject.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -51,7 +53,14 @@ public class ContinuousMovement : MonoBehaviour
         character.Move(direction * Time.fixedDeltaTime * horizontalSpeed);
 
         //vertical movement
-        character.height = Mathf.Clamp(character.height - verticalInputAxis.y * Time.fixedDeltaTime * verticalSpeed, 0.5f, 3f);
+        float verticalChange = verticalInputAxis.y * Time.fixedDeltaTime * verticalSpeed;
+        Vector3 verticalScale = cameraOffset.transform.localScale + new Vector3(verticalChange, verticalChange, verticalChange);
+
+        verticalScale.x = Mathf.Clamp(verticalScale.x, 0.4f, 3f);
+        verticalScale.y = Mathf.Clamp(verticalScale.y, 0.4f, 3f);
+        verticalScale.z = Mathf.Clamp(verticalScale.z, 0.4f, 3f);
+        
+        cameraOffset.transform.localScale = verticalScale;
 
         //gravity
         if (isGrounded) {
