@@ -56,9 +56,9 @@ public class ContinuousMovement : MonoBehaviour
         float verticalChange = verticalInputAxis.y * Time.fixedDeltaTime * verticalSpeed;
         Vector3 verticalScale = cameraOffset.transform.localScale + new Vector3(verticalChange, verticalChange, verticalChange);
 
-        verticalScale.x = Mathf.Clamp(verticalScale.x, 0.4f, 3f);
-        verticalScale.y = Mathf.Clamp(verticalScale.y, 0.4f, 3f);
-        verticalScale.z = Mathf.Clamp(verticalScale.z, 0.4f, 3f);
+        verticalScale.x = Mathf.Clamp(verticalScale.x, 1f, 3f);
+        verticalScale.y = Mathf.Clamp(verticalScale.y, 1f, 3f);
+        verticalScale.z = Mathf.Clamp(verticalScale.z, 1f, 3f);
         
         cameraOffset.transform.localScale = verticalScale;
 
