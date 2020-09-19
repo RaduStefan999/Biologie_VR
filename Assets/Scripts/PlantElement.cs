@@ -6,7 +6,6 @@ using UnityEngine;
 
 public class PlantElement
 {
-    public int id;
     public string Name;
     public Texture Image;
     public string Information;
