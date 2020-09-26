@@ -42,18 +42,10 @@ public class Label : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {     
-        
-
+    {
         GetCoordonates();
         DrawLabelArrow();
         LabelFaceCamera();
-        
-        Debug.Log("World Corners");
-        for (var i = 0; i < 4; i++)
-        {
-            Debug.Log("World Corner " + i + " : " + label_coordonates[i]);
-        }
     }
 
     void GetCoordonates() 
@@ -108,6 +100,8 @@ public class Label : MonoBehaviour
     void LabelFaceCamera() 
     {
         Vector3 TargetVector = labelCenter_coordonates - MainCamera.transform.position;
-        labelRect.rotation = Quaternion.LookRotation(TargetVector, MainCamera.transform.rotation * Vector3.up);
+        Quaternion LookAt = Quaternion.LookRotation(TargetVector, MainCamera.transform.rotation * Vector3.up);
+
+        labelRect.rotation = Quaternion.Euler(LookAt.eulerAngles.x, LookAt.eulerAngles.y, labelRect.rotation.z);
     }
 }
