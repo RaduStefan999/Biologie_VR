@@ -7,9 +7,9 @@ using UnityEngine;
 public class InteractableElement 
 {
     public GameObject element;
-    public Material normalMaterial;
-    public Material highLightMaterial;
-    public GameObject descrition;
+    public Material[] normalMaterials;
+    public Material[] highLightMaterials;
+    public GameObject description;
 
     public bool highLighted = false;
     public bool selected = false;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class InteractableElementController : MonoBehaviour
 {
-    public Dictionary<InteractableElement, string> elements;
+    public InteractableElement[] elements;
 
     // Start is called before the first frame update
     void Start()
