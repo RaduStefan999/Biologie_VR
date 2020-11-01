@@ -2,28 +2,46 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[System.Serializable]
-
-public class InteractableElement 
+public class InteractableElement : MonoBehaviour
 {
-    public GameObject element;
     public Material[] normalMaterials;
     public Material[] highLightMaterials;
     public GameObject description;
+    InteractableElement[] interactableElements;
+    bool highLighed = false;
 
-    public bool highLighted = false;
-    public bool selected = false;
-
-
-    public void select () {
-
+    void Start ()
+    {
+        interactableElements = FindObjectsOfType<InteractableElement>();
     }
 
-    public void highLight () {
+    public void onSelect () 
+    {
+        for (int i = 0; i < interactableElements.Length; i++)
+        {
+            interactableElements[i].hideDescription();
+        }
 
+        description.SetActive(true);
     }
 
-    public void removeHighLight () {
-        
+    public void onHoverEnter () 
+    {
+        this.GetComponent<Renderer>().materials = highLightMaterials;
+        highLighed = true;
+    }
+
+    public void onHoverExit () 
+    {
+        this.GetComponent<Renderer>().materials = normalMaterials;
+        highLighed = false;
+    }
+
+    public void hideDescription ()
+    {
+        if (!highLighed)
+        {
+            description.SetActive(false);   
+        }
     }
 }
