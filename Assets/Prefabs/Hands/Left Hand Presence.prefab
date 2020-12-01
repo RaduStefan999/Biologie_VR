@@ -46,3 +46,5 @@ MonoBehaviour:
   controllerCharacteristics: 320
   handModelPrefab: {fileID: 109434732395284509, guid: 65847589f926b734d9eaed6e25f0046b,
     type: 3}
+  pointerModelPrefab: {fileID: 6370114943498206778, guid: 2e7d392e3a3c2fa4592089417069f3e3,
+    type: 3}

@@ -7,10 +7,14 @@ public class HandPresence : MonoBehaviour
 {
     public InputDeviceCharacteristics controllerCharacteristics;
     public GameObject handModelPrefab;
+    public GameObject pointerModelPrefab;
     
     private InputDevice targetDevice;
     private GameObject spawnedHandModel;
+    private GameObject spawnedPointerModel;
     private Animator handAnimator;
+    private bool isPointerOpen;
+    private bool isPressing;
 
     // Start is called before the first frame update
     void Start()
@@ -28,22 +32,29 @@ public class HandPresence : MonoBehaviour
 
             spawnedHandModel = Instantiate(handModelPrefab, transform);
             handAnimator = spawnedHandModel.GetComponent<Animator>();
+
+            spawnedPointerModel = Instantiate(pointerModelPrefab, transform);
+            spawnedPointerModel.SetActive(false);
         }
     }
 
     void UpdateHandAnimation() 
     {
-        if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue)) { 
+        if (targetDevice.TryGetFeatureValue(CommonUsages.trigger, out float triggerValue)) 
+        { 
             handAnimator.SetFloat("Trigger", triggerValue);
         }
-        else {
+        else 
+        {
             handAnimator.SetFloat("Trigger", 0);
         }
 
-        if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue)) { 
+        if (targetDevice.TryGetFeatureValue(CommonUsages.grip, out float gripValue)) 
+        { 
             handAnimator.SetFloat("Grip", gripValue);
         }
-        else {
+        else 
+        {
             handAnimator.SetFloat("Grip", 0);
         }
     }
@@ -51,11 +62,40 @@ public class HandPresence : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!targetDevice.isValid) {
+        if (!targetDevice.isValid) 
+        {
             TryInitialize();
         }
         else {
-            UpdateHandAnimation();
+
+            if (targetDevice.TryGetFeatureValue(CommonUsages.primaryButton, out bool primary) && primary) 
+            { 
+                if (!isPressing)
+                {
+                    isPressing = true;
+                    isPointerOpen = !isPointerOpen;
+
+                    if (!isPointerOpen)
+                    {
+                        spawnedHandModel.SetActive(true);
+                        spawnedPointerModel.SetActive(false);
+                    }
+                    else
+                    {
+                        spawnedHandModel.SetActive(false);
+                        spawnedPointerModel.SetActive(true);
+                    }
+                }
+            }
+            else
+            {
+                isPressing = false;
+            }
+
+            if (!isPointerOpen)
+            {
+                UpdateHandAnimation();
+            }
         }
     }
 }
