@@ -17,9 +17,9 @@ public class PlantsGUI : MonoBehaviour
     
     [SerializeField]
     public RawImage DisplayedImage;
-
+    public RawImage DisplayedSchema;
     public GameObject InfoArea;
-
+    public RectTransform ViewPort;
     public LessonInfo Info;
 
     // Start is called before the first frame update
@@ -34,6 +34,8 @@ public class PlantsGUI : MonoBehaviour
                 DisplayedTitle.text = Info.plantElements[index].Name;
                 DisplayedText.text = Info.plantElements[index].Information;
                 DisplayedImage.texture = Info.plantElements[index].Image;
+                DisplayedSchema.texture = Info.plantElements[index].Schema;
+                ViewPort.sizeDelta = new Vector2 (ViewPort.sizeDelta.x, Info.plantElements[index].Height);;
 
                 if (!InfoArea.activeSelf) {
                     InfoArea.SetActive(true);

@@ -8,5 +8,7 @@ public class PlantElement
 {
     public string Name;
     public Texture Image;
+    public Texture Schema;
     public string Information;
+    public float Height;
 }
