@@ -48,3 +48,6 @@ MonoBehaviour:
     type: 3}
   pointerModelPrefab: {fileID: 6370114943498206778, guid: 2e7d392e3a3c2fa4592089417069f3e3,
     type: 3}
+  Sepale: {fileID: 0}
+  Petale: {fileID: 0}
+  Stamina: {fileID: 0}

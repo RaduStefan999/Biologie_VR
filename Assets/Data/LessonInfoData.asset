@@ -13,42 +13,42 @@ MonoBehaviour:
   m_Name: LessonInfoData
   m_EditorClassIdentifier: 
   plantElements:
-  - Name: REPRODUCEREA LA FERIGI ( PTERIDOPHYTE)
+  - Name: REPRODUCTION IN FERNS
     Image: {fileID: 2800000, guid: 490a5791af4d76a41b90830cc3ab857f, type: 3}
     Schema: {fileID: 2800000, guid: af4c94ba5a9e1f34690ecdda295b22e7, type: 3}
-    Information: "Cel mai caracteristic organ al ferigilor este frunza compus\u0103,
-      tulpina este \xEEn general orizontal\u0103 \u0219i subteran\u0103 \u0219i se
-      nume\u0219te rizom. Sistemul radicular este alc\u0103tuit din mai multe r\u0103d\u0103cini
-      adventive, deoarece acestea sunt ata\u0219ate lateral de tulpin\u0103."
+    Information: he most characteristic organ of ferns is the compound leaf, the
+      stem is generally horizontal and underground and is called the rhizome. The
+      root system consists of several adventitious roots, as they are attached laterally
+      to the stem.
     Height: 650
-  - Name: "REPRODUCEREA LA BRYOPHYTE (MU\u0218CHI DE P\u0102M\xC2NT)"
+  - Name: REPRODUCTION IN MOSS
     Image: {fileID: 2800000, guid: 3d243381367f61047b30fa77b3deee56, type: 3}
     Schema: {fileID: 2800000, guid: 2e5eb892c9257dd41bcc3ef1f6ae4a10, type: 3}
-    Information: "Mu\u0219chii de p\u0103m\xE2nt- Briofitele \xEEn sens strict- gametofit
-      cu frunze Partea vizibil\u0103 cu clorofil\u0103 este un  gametofit (haploid,
-      cu n cromozomi). Gametofitul b\u0103rb\u0103tesc produce gametangele, b\u0103rb\u0103tesc
-      care d\u0103 anteridia (organul reproduc\u0103tor b\u0103rb\u0103tesc) care
-      produce anterozoizi (celule sexuale b\u0103rb\u0103te\u0219ti).  Gametofitul
-      femeiesc produce gametangele femeiesc care d\u0103 arhegonul (organul reproduc\u0103tor
-      femeiesc) care produce oosfera (celula sexual\u0103 femeieasc\u0103). "
+    Information: Earth muscles - Bryophytes in the strict sense - Gametophyte with
+      leaves The visible part with chlorophyll is a gametophyte (haploid, with n
+      chromosomes). The male gametophyte produces the gametes, the male which gives
+      the antheridia (the male reproductive organ) which produces the anterozoites
+      (the male sex cells). The female gametophyte produces the female gametangs
+      that give the archaeon (the female reproductive organ) that produces the oosphere
+      (the female sex cell).
     Height: 650
-  - Name: 'REPRODUCEREA LA PIN ( GIMNOSPERME) '
+  - Name: REPRODUCTION IN GYMNOSPERMS
     Image: {fileID: 2800000, guid: 05a2eea667ac1564c87bb5ff8113d0a2, type: 3}
     Schema: {fileID: 2800000, guid: fda644e36a17fb043b1c72362cf78c39, type: 3}
     Information: 
     Height: 377
-  - Name: FLOAREA LA ANGIOSPERME
+  - Name: REPRODUCTION IN ANGIOSPERMS
     Image: {fileID: 2800000, guid: 9c10a78fed79980468460697f4b41ba3, type: 3}
     Schema: {fileID: 2800000, guid: a8c5ff9a0d39c8f4c963236b19c25cdb, type: 3}
     Information: 
     Height: 377
-  - Name: REPRODUCEREA LA PLANTE
+  - Name: REPRODUCTION IN PLANTS
     Image: {fileID: 2800000, guid: 6b44d9162043aaf4499bb0401f3782f5, type: 3}
     Schema: {fileID: 2800000, guid: 894c32c68e7e69542b2c13ca7a736cf9, type: 3}
-    Information: "Plantele sunt organisme eucariote autotrofe clorofiliene.  Plantele
-      se subdivid  \xEEn dou\u0103 mari grupe: talofite \u0219i cormofite prin colonizarea
-      progresiv\u0103 a mediului terestru. Talofitele sunt plante care sunt ini\u021Bial
-      acvatice sau tr\u0103iesc \xEEn medii umede. Au un aparat vegetativ (parte
-      a unei plante care asigur\u0103 realizarea func\u021Biilor sale metabolice
-      vitale), \xEEntotdeauna pu\u021Bin diferen\u021Biat numit talus."
+    Information: 'Plants are autotrophic chlorophyll eukaryotic organisms. Plants
+      are subdivided into two large groups: talophytes and cormophytes through the
+      progressive colonization of the terrestrial environment. Talophytes are plants
+      that are initially aquatic or live in humid environments. They have a vegetative
+      apparatus (part of a plant that ensures the realization of its vital metabolic
+      functions), always slightly differentiated called the talus.'
     Height: 650

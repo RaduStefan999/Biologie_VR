@@ -97,5 +97,15 @@ public class HandPresence : MonoBehaviour
                 UpdateHandAnimation();
             }
         }
+    
+        if (targetDevice.TryGetFeatureValue(CommonUsages.secondaryButton, out bool secondary) && secondary) 
+        {
+            GameObject[] respawns = GameObject.FindGameObjectsWithTag("Destroy");
+
+            foreach (GameObject respawn in respawns) {
+                respawn.GetComponent<Rigidbody>().isKinematic = false;
+            }
+        }
+
     }
 }
